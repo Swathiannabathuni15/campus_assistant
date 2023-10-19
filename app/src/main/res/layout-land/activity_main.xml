@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="130dp"
+            android:layout_height="90dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            app:srcCompat="@drawable/vvitlogo" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Roll_number"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="32dp"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:drawableRight="@drawable/baseline_remove_red_eye_24"
+            android:drawablePadding="10dp"
+            android:hint="Password"
+            android:padding="10dp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/Roll_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/campus_text"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="29dp"
+            android:drawableLeft="@drawable/baseline_person_pin_24"
+            android:drawablePadding="20dp"
+            android:hint="Email"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/log_btn"
+            android:layout_width="343dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/forget_text"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="170dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="171dp"
+            android:backgroundTint="@color/black"
+            android:text="Login" />
+
+        <TextView
+            android:id="@+id/forget_text"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="433dp"
+            android:text="Forgot Password?" />
+
+
+        <TextView
+            android:id="@+id/campus_text"
+            android:layout_width="194dp"
+            android:layout_height="42dp"
+            android:layout_below="@id/logo"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="255dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="234dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Campus Assistant"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/Register_text"
+            android:layout_width="337dp"
+            android:layout_height="49dp"
+            android:layout_below="@id/log_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Register" />
+
+    </RelativeLayout>
+</ScrollView>
+
