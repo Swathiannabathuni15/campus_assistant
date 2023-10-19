@@ -142,7 +142,7 @@ public class RegistrationPage extends AppCompatActivity {
                         // Store the verification ID for later use
                         verificationId = s;
 
-                        // Display OTP EditText for user to enter OTP
+                       /// // Display OTP EditText for user to enter OTP
                         otpEditText.setVisibility(View.VISIBLE);
                         otpButton.setText("Verify OTP");
                         Toast.makeText(RegistrationPage.this, "OTP sent to your mobile number", Toast.LENGTH_SHORT).show();
