@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="year_options">
+        <item>First Year</item>
+        <item>Second Year</item>
+        <item>Third Year</item>
+        <item>Fourth Year</item>
+    </string-array>
+
+
+
+    <string-array name="semester_options">
+        <item>Semester 1</item>
+        <item>Semester 2</item>
+    </string-array>
+
+    <array name="branch_options">
+        <item>CSE</item>
+        <item>ECE</item>
+        <item>EEE</item>
+        <item>CIVIL</item>
+        <item>AIM</item>
+        <item>AIDS</item>
+        <item>CSO</item>
+        <item>CIC</item>
+        <item>MECH</item>
+        <item>IT</item>
+    </array>
+
+
+
+
+
+
+
+</resources>

@@ -32,7 +32,7 @@
         android:drawableLeft="@drawable/baseline_lock_24"
         android:drawableRight="@drawable/baseline_remove_red_eye_24"
 
-
+        android:minHeight="48dp"
         android:drawablePadding="10dp"
         android:elevation="4dp"
         android:hint="Password"
@@ -53,7 +53,7 @@
         android:drawableLeft="@drawable/baseline_person_pin_24"
         android:drawablePadding="20dp"
         android:elevation="4dp"
-
+        android:minHeight="48dp"
         android:hint="Email"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"

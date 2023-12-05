@@ -33,7 +33,9 @@ public class HomePage extends AppCompatActivity {
         resultsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle Results button click
+                // Navigate to ResultsActivity
+                Intent intent = new Intent(HomePage.this, Results.class);
+                startActivity(intent);
             }
         });
 
