@@ -10,17 +10,6 @@
     android:background="#FFFFFF"
     tools:context=".MainActivity">
 
-    <View
-        android:id="@+id/topDesign"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
-        android:background="#E97F69"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/logo"
         android:layout_width="130dp"
@@ -43,6 +32,7 @@
         android:drawableLeft="@drawable/baseline_lock_24"
         android:drawableRight="@drawable/baseline_remove_red_eye_24"
 
+
         android:drawablePadding="10dp"
         android:elevation="4dp"
         android:hint="Password"
@@ -50,21 +40,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Roll_number" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/Roll_number"
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="34dp"
         android:background="@color/white"
         android:drawableLeft="@drawable/baseline_person_pin_24"
         android:drawablePadding="20dp"
         android:elevation="4dp"
 
-        android:hint="Roll Number"
+        android:hint="Email"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -78,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="serif"
-        android:text="Campus Asssistance"
+        android:text="CAMPUS ASSISTANCE"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

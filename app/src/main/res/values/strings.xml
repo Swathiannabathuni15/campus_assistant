@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">campus assistant</string>
+    <string name="registration_title">Registration</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_get_otp">Get OTP</string>
+    <string name="hint_enter_otp">Enter OTP</string>
+    <string name="hint_mobile_number">Mobile Number</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="hint_roll_number_alphanumeric">Roll Number</string>
+    <string name="btn_verify_otp">Verify OTP</string>
+    <string name="content_description_roll_number">Roll Number (Alphanumeric)</string>
+    <string name="otp_message">Your OTP is: %s</string>
+    <string name="password_toggle_description">Toggle password visibility</string>
+
 
     <style name="outfit">outfit</style>
 

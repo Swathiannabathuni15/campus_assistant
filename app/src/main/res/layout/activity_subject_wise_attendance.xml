@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Logo at the top-right corner -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/vvitloghome"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <!-- Text at the top and center -->
+    <TextView
+        android:id="@+id/titleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="36dp"
+        android:layout_toStartOf="@+id/logoImageView"
+        android:text="Subject Wise Attendance"
+        android:textSize="22sp" />
+
+    <!-- Bar Chart in the middle -->
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="480dp"
+        android:layout_height="344dp"
+        android:layout_below="@id/titleLabel"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="192dp"
+
+    android:elevation="4dp"
+    android:padding="8dp"
+    android:clipToPadding="false"
+    android:outlineSpotShadowColor="@android:color/black"
+    android:outlineAmbientShadowColor="@android:color/darker_gray"
+    android:outlineProvider="background"
+    android:foreground="?android:selectableItemBackground"
+    android:foregroundGravity="center"
+    android:foregroundTint="?android:colorControlHighlight"
+    />
+
+</RelativeLayout>
