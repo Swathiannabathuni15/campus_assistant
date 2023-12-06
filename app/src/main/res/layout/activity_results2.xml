@@ -28,90 +28,106 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="-38dp"
             android:text="Results"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold"/>
 
-        <!-- Add this TextView for prompting the user to select a branch -->
-
-        <!-- Add this Spinner for selecting the branch -->
-
-        <!-- Add this TextView for prompting the user to select a year -->
-
-        <!-- Add this Spinner for selecting the year -->
-
-        <!-- Year selection -->
-
-        <!-- Semester selection -->
-
+        <!-- TextView for prompting the user to select a branch -->
         <TextView
             android:id="@+id/selectBranchText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/titleLabel"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="27dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="31dp"
             android:text="Branch"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
+        <!-- Spinner for selecting the branch -->
         <Spinner
             android:id="@+id/branchSpinner"
-            android:layout_width="220dp"
+            android:layout_width="144dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/selectBranchText"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="-24dp"
-            android:layout_marginEnd="68dp"
+            android:layout_marginTop="-25dp"
+            android:layout_marginEnd="136dp"
             android:entries="@array/branch_options" />
 
-        <!-- Add this Button with orange color to the right of the EditText -->
-
-
-        <!-- Add this Button with orange color to the right of the EditText -->
-
+        <!-- TextView for prompting the user to select a year -->
         <TextView
             android:id="@+id/selectYearText"
-            android:layout_width="52dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/branchSpinner"
+            android:layout_below="@id/regulationSpinner"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="19dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
             android:text="Year"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
+        <!-- Spinner for selecting the year -->
         <Spinner
             android:id="@+id/yearSpinner"
-            android:layout_width="220dp"
+            android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/selectYearText"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-25dp"
-            android:layout_marginEnd="69dp"
+            android:layout_marginEnd="136dp"
             android:entries="@array/year_options" />
 
+        <!-- TextView for prompting the user to select a regulation -->
+        <TextView
+            android:id="@+id/selectRegulationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/branchSpinner"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:text="Regulation"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <!-- Spinner for selecting the regulation -->
+        <Spinner
+            android:id="@+id/regulationSpinner"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/selectRegulationText"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-25dp"
+            android:layout_marginEnd="136dp"
+            android:entries="@array/regulation_options" />
+
+        <!-- TextView for prompting the user to select a semester -->
         <TextView
             android:id="@+id/selectSemesterText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/yearSpinner"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
             android:text="Semester"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
+        <!-- Spinner for selecting the semester -->
         <Spinner
             android:id="@+id/semesterSpinner"
-            android:layout_width="223dp"
+            android:layout_width="146dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/selectSemesterText"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="-25dp"
-            android:layout_marginEnd="67dp"
+            android:layout_marginEnd="136dp"
             android:entries="@array/semester_options" />
 
-        <!-- ... -->
-
+        <!-- EditText for entering Hall Ticket No. -->
         <EditText
             android:id="@+id/rollNumberEditText"
             android:layout_width="346dp"
@@ -131,8 +147,7 @@
             android:paddingEnd="16dp"
             android:paddingBottom="12dp" />
 
-        <!-- ... -->
-        <!-- Add these TextView elements for displaying Hall Ticket number and Name -->
+        <!-- Button for submitting -->
         <Button
             android:id="@+id/submitButton"
             android:layout_width="wrap_content"
@@ -149,11 +164,13 @@
             android:text="Submit"
             android:textColor="#FFFFFF" />
 
+        <!-- TextViews for displaying Hall Ticket number and Name -->
         <TextView
             android:id="@+id/hallTicketLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/submitButton"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="16dp"
             android:text="Hall Ticket No:"
             android:textSize="18sp"
@@ -169,6 +186,7 @@
             android:layout_alignBaseline="@id/hallTicketLabel"
             android:text=""
             android:textSize="18sp"
+            android:textStyle="bold"
             android:visibility="gone"/>
 
         <TextView
@@ -176,7 +194,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/hallTicketLabel"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="25dp"
             android:text="Name:"
             android:textSize="18sp"
             android:visibility="gone"/>
@@ -186,14 +205,101 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/nameLabel"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="18dp"
             android:layout_marginEnd="16dp"
             android:layout_alignBaseline="@id/nameLabel"
             android:text=""
             android:textSize="18sp"
+            android:textStyle="bold"
             android:visibility="gone"/>
 
+        <TableLayout
+            android:id="@+id/marksTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameValue"
+            android:padding="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="31dp"
+            android:visibility="gone">
 
+            <!-- Table header -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="S Code"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="Subject"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Grade"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Credits"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <!-- Example row, replace with actual data -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:background="#D9D9D9">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="SC001"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="Subject 1"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="A"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <!-- Add more rows for other subjects and grades as needed -->
+
+        </TableLayout>
 
 
     </RelativeLayout>

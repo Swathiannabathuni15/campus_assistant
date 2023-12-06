@@ -10,9 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 public class Results extends AppCompatActivity {
 
@@ -20,6 +23,9 @@ public class Results extends AppCompatActivity {
     private TextView hallTicketValue;
     private TextView nameLabel;
     private TextView nameValue;
+    private EditText rollNumberEditText;
+    private Button submitButton;
+    private TableLayout marksTable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +36,9 @@ public class Results extends AppCompatActivity {
         Spinner branchSpinner = findViewById(R.id.branchSpinner);
         Spinner yearSpinner = findViewById(R.id.yearSpinner);
         Spinner semesterSpinner = findViewById(R.id.semesterSpinner);
-        EditText rollNumberEditText = findViewById(R.id.rollNumberEditText);
-        Button submitButton = findViewById(R.id.submitButton);
+        rollNumberEditText = findViewById(R.id.rollNumberEditText);
+        submitButton = findViewById(R.id.submitButton);
+        marksTable = findViewById(R.id.marksTable);
 
         // Initialize TextViews for Hall Ticket number and Name
         hallTicketLabel = findViewById(R.id.hallTicketLabel);
@@ -96,13 +103,18 @@ public class Results extends AppCompatActivity {
                     fadeIn(nameLabel);
                     fadeIn(nameValue);
 
-                    // Example data (replace with your actual data)
-                    String hallTicketNumber = "HT123456";
-                    String name = "John Doe";
-
                     // Update TextViews with data
-                    hallTicketValue.setText(hallTicketNumber);
+                    hallTicketValue.setText(rollNumber);  // Use the entered Hall Ticket No. as the value
+                    // Example data (replace with your actual data)
+                    String name = "John Doe";
                     nameValue.setText(name);
+
+                    // Show Marks and SGPA label and marksTable with fade-in animation
+                    fadeIn(findViewById(R.id.marksTable));
+                    fadeIn(marksTable);
+
+                    // Populate the table with dynamic data (replace with your actual data)
+                    populateTable();
                 }
             }
         });
@@ -113,5 +125,76 @@ public class Results extends AppCompatActivity {
         fadeIn.setDuration(1000); // Adjust the duration as needed
         view.startAnimation(fadeIn);
         view.setVisibility(View.VISIBLE);
+    }
+
+    private void populateTable() {
+        // Clear existing rows
+        marksTable.removeAllViews();
+
+        // Create table header
+        createTableRow("Subject Code", "Subject", "Grade", "Credits", true);
+
+        // Example data (replace with your actual data)
+        String[] subjectCodes = {"SC001", "SC002", "SC003"};
+        String[] subjects = {"Subject 1", "Subject 2", "Subject 3"};
+        String[] grades = {"A", "B", "C"};
+        String[] credits = {"3", "4", "2"};
+
+        // Populate the table with data
+        for (int i = 0; i < subjectCodes.length; i++) {
+            createTableRow(subjectCodes[i], subjects[i], grades[i], credits[i], i % 2 == 0);
+        }
+    }
+
+    private void createTableRow(String subjectCode, String subject, String grade, String credits, boolean isEven) {
+        TableRow row = new TableRow(this);
+        TableRow.LayoutParams params = new TableRow.LayoutParams(
+                TableRow.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.WRAP_CONTENT
+        );
+
+        // Set margin to the row
+        params.setMargins(0, 0, 0, 10);
+        row.setLayoutParams(params);
+
+        // Set background color based on even or odd row
+        int bgColor = isEven ? ContextCompat.getColor(this, android.R.color.white) : ContextCompat.getColor(this, R.color.tableRowColor);
+        row.setBackgroundColor(bgColor);
+
+
+        // Subject Code column
+        TextView codeTextView = new TextView(this);
+        codeTextView.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+        codeTextView.setText(subjectCode);
+        codeTextView.setTextSize(16);
+        codeTextView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+        row.addView(codeTextView);
+
+        // Subject column
+        TextView subjectTextView = new TextView(this);
+        subjectTextView.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 2f));
+        subjectTextView.setText(subject);
+        subjectTextView.setTextSize(16);
+        subjectTextView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+        row.addView(subjectTextView);
+
+        // Grade column
+        TextView gradeTextView = new TextView(this);
+        gradeTextView.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+        gradeTextView.setText(grade);
+        gradeTextView.setTextSize(16);
+        gradeTextView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+        row.addView(gradeTextView);
+
+        // Credits column
+        TextView creditsTextView = new TextView(this);
+        creditsTextView.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT, 1f));
+        creditsTextView.setText(credits);
+        creditsTextView.setTextSize(16);
+        creditsTextView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+        row.addView(creditsTextView);
+
+        // Add the row to the table
+        marksTable.addView(row);
     }
 }
