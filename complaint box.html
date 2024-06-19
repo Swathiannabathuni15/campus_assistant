@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complaint Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+    }
+    form {
+        max-width: 600px;
+        background-color: #fff;
+        padding: 20px;
+        margin: 0 auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    input[type=text], input[type=tel], input[type=number], select, textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 5px;
+    }
+    textarea {
+        resize: vertical;
+    }
+    .file-input {
+        margin-top: 10px;
+    }
+    .submit-btn {
+        background-color: #ff8c00;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .submit-btn:hover {
+        background-color: #45a049;
+    }
+    .confidential {
+        text-align: center;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .hidden {
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <h2>Complaint Form</h2>
+
+    <form id="complaintForm" action="#" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="complaintFrom">Complaint From:</label>
+            <select id="complaintFrom" name="complaintFrom">
+                <option value="">Select</option>
+                <option value="student">Student</option>
+                <option value="faculty">Faculty</option>
+                <option value="others">Others</option>
+            </select>
+        </div>
+        
+        <div id="dynamicFields">
+            <!-- Dynamic fields will be inserted here -->
+        </div>
+        
+        <div class="form-group">
+            <label for="complaintCategory">Complaint Category:</label>
+            <select id="complaintCategory" name="complaintCategory" required>
+                <option value="">Select Category</option>
+                <option value="academic">Academic</option>
+                <option value="administrative">Administrative</option>
+                <option value="infrastructure">Infrastructure</option>
+                <option value="discipline">Discipline</option>
+                <option value="financial">Financial</option>
+                <option value="extracurricular">Extracurricular</option>
+                <option value="lost">Lost Belongings</option>
+                <option value="found">Found Belongings</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+        </div>
+        
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="5" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Submit Complaint</button>
+        
+        <div class="confidential">
+            Your information is confidential and will only be used for the purpose of addressing your complaint.
+        </div>
+    </form>
+
+<script>
+    document.getElementById('complaintFrom').addEventListener('change', function() {
+        var dynamicFields = document.getElementById('dynamicFields');
+        dynamicFields.innerHTML = ''; // Clear the current dynamic fields
+
+        var selectedOption = this.value;
+
+        if (selectedOption === 'student') {
+            dynamicFields.innerHTML = `
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="roll">Roll Number:</label>
+                    <input type="text" id="roll" name="roll">
+                </div>
+                <div class="form-group">
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" name="department">
+                </div>
+                <div class="form-group">
+                    <label for="year">Expected Graduation Year:</label>
+                    <input type="number" id="year" name="year" min="2020">
+                </div>
+                <div class="form-group">
+                    <label for="studentPhone">Phone Number:</label>
+                    <input type="tel" id="studentPhone" name="studentPhone" pattern="[0-9]{10}" required>
+                </div>
+            `;
+        } else if (selectedOption === 'faculty') {
+            dynamicFields.innerHTML = `
+                <div class="form-group">
+                    <label for="facultyName">Name:</label>
+                    <input type="text" id="facultyName" name="facultyName" required>
+                </div>
+                <div class="form-group">
+                    <label for="facultyDept">Department:</label>
+                    <input type="text" id="facultyDept" name="facultyDept">
+                </div>
+                <div class="form-group">
+                    <label for="facultyPhone">Phone Number:</label>
+                    <input type="tel" id="facultyPhone" name="facultyPhone" pattern="[0-9]{10}" required>
+                </div>
+            `;
+        } else if (selectedOption === 'others') {
+            dynamicFields.innerHTML = `
+                <div class="form-group">
+                    <label for="othersName">Name:</label>
+                    <input type="text" id="othersName" name="othersName" required>
+                </div>
+                <div class="form-group">
+                    <label for="othersPhone">Phone Number:</label>
+                    <input type="tel" id="othersPhone" name="othersPhone" pattern="[0-9]{10}" required>
+                </div>
+            `;
+        }
+    });
+</script>
+
+</body>
+</html>
