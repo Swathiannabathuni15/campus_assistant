@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            width: 30%;
+            margin: 70px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        select, input[type="text"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .info-section {
+            display: none;
+        }
+
+        input[type="submit"] {
+            background-color: #ff8c00;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ffae42;
+        }
+
+        #shareInfoLabel {
+            font-weight: normal;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback</h1>
+        <form action="#" method="POST">
+            <label for="feedbackType">Feedback from:</label><br>
+            <select id="feedbackType" name="feedbackType">
+                <option value="student">Student</option>
+                <option value="faculty">Faculty</option>
+                <option value="others">Others</option>
+            </select><br><br>
+            
+            <label id="shareInfoLabel" for="shareInfo">Are you willing to share your personal information?</label><br>
+            <input type="checkbox" id="shareInfo" name="shareInfo"> Yes, I'm willing to share<br><br>
+    
+            <div id="studentInfo" class="info-section">
+                <label for="studentName">Name:</label><br>
+                <input type="text" id="studentName" name="studentName"><br><br>
+    
+                <label for="studentRollNumber">Roll Number:</label><br>
+                <input type="text" id="studentRollNumber" name="studentRollNumber"><br><br>
+    
+                <label for="studentBranch">Branch:</label><br>
+                <input type="text" id="studentBranch" name="studentBranch"><br><br>
+            </div>
+    
+            <div id="facultyInfo" class="info-section">
+                <label for="facultyName">Name:</label><br>
+                <input type="text" id="facultyName" name="facultyName"><br><br>
+    
+                <label for="facultyDepartment">Department:</label><br>
+                <input type="text" id="facultyDepartment" name="facultyDepartment"><br><br>
+            </div>
+    
+            <div id="othersInfo" class="info-section">
+                <label for="othersName">Name:</label><br>
+                <input type="text" id="othersName" name="othersName"><br><br>
+            </div>
+    
+            <label for="feedback">Feedback:</label><br>
+            <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br><br>
+    
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('shareInfo').addEventListener('change', function() {
+            var shareInfoChecked = this.checked;
+            var studentInfo = document.getElementById('studentInfo');
+            var facultyInfo = document.getElementById('facultyInfo');
+            var othersInfo = document.getElementById('othersInfo');
+            
+            if (shareInfoChecked) {
+                var feedbackType = document.getElementById('feedbackType').value;
+                if (feedbackType === 'student') {
+                    studentInfo.style.display = 'block';
+                    facultyInfo.style.display = 'none';
+                    othersInfo.style.display = 'none';
+                } else if (feedbackType === 'faculty') {
+                    studentInfo.style.display = 'none';
+                    facultyInfo.style.display = 'block';
+                    othersInfo.style.display = 'none';
+                } else {
+                    studentInfo.style.display = 'none';
+                    facultyInfo.style.display = 'none';
+                    othersInfo.style.display = 'block';
+                }
+            } else {
+                studentInfo.style.display = 'none';
+                facultyInfo.style.display = 'none';
+                othersInfo.style.display = 'none';
+            }
+        });
+
+        document.getElementById('feedbackType').addEventListener('change', function() {
+            var feedbackType = this.value;
+            var studentInfo = document.getElementById('studentInfo');
+            var facultyInfo = document.getElementById('facultyInfo');
+            var othersInfo = document.getElementById('othersInfo');
+
+            if (feedbackType === 'student') {
+                studentInfo.style.display = 'none';
+                facultyInfo.style.display = 'none';
+                othersInfo.style.display = 'none';
+            } else if (feedbackType === 'faculty') {
+                studentInfo.style.display = 'none';
+                facultyInfo.style.display = 'none';
+                othersInfo.style.display = 'none';
+            } else {
+                studentInfo.style.display = 'none';
+                facultyInfo.style.display = 'none';
+                othersInfo.style.display = 'none';
+            }
+
+            // Uncheck the checkbox when changing the feedback type
+            document.getElementById('shareInfo').checked = false;
+        });
+    </script>
+</body>
+</html>
