@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .title {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="tel"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px;
+            background: #5cb85c;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: #4cae4c;
+        }
+        .error {
+            color: red;
+            margin: 5px 0;
+        }
+        #receipt, #studentDetails, #paymentMethodSection {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #e9ecef;
+            border-radius: 8px;
+        }
+        #receipt p, #studentDetails p, #paymentMethodSection p {
+            margin: 0 0 10px;
+        }
+        #printBtn {
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #printBtn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">VASIREDDY VENKATADRI INSTITUTE OF TECHNOLOGY</div>
+        <h1>Fee Payment</h1>
+        <form id="searchForm">
+            <label for="rollNumber">Roll Number</label>
+            <input type="text" id="rollNumber" name="rollNumber" required>
+            <div id="searchError" class="error"></div>
+            <input type="submit" value="Search">
+        </form>
+
+        <div id="studentDetails">
+            <h2>Student Details</h2>
+            <p><strong>Roll Number:</strong> <span id="detailRollNumber"></span></p>
+            <p><strong>Name:</strong> <span id="detailName"></span></p>
+            <p><strong>Email:</strong> <span id="detailEmail"></span></p>
+            <p><strong>Total Fee:</strong> $<span id="totalFee"></span></p>
+            <p><strong>Amount Paid:</strong> $<span id="amountPaid"></span></p>
+            <p><strong>Remaining Amount:</strong> $<span id="remainingAmount"></span></p>
+            <button id="payNowBtn">Pay Now</button>
+        </div>
+
+        <div id="paymentMethodSection">
+            <h2>Payment Method</h2>
+            <form id="paymentForm">
+                <label for="paymentMethod">Payment Method</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="">Select Payment Method</option>
+                    <option value="card">Credit/Debit Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="cash">Cash</option>
+                    <!-- Add more payment methods if needed -->
+                </select>
+
+                <div id="cardDetails" style="display:none;">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="tel" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456">
+
+                    <label for="cardExpiry">Expiry Date</label>
+                    <input type="tel" id="cardExpiry" name="cardExpiry" placeholder="MM/YY">
+
+                    <label for="cardCVC">CVC</label>
+                    <input type="tel" id="cardCVC" name="cardCVC" placeholder="123">
+                </div>
+
+                <div id="paymentError" class="error"></div>
+
+                <input type="submit" value="Pay">
+            </form>
+        </div>
+
+        <div id="receipt">
+            <h2>Payment Receipt</h2>
+            <p><strong>Roll Number:</strong> <span id="receiptRollNumber"></span></p>
+            <p><strong>Name:</strong> <span id="receiptName"></span></p>
+            <p><strong>Email:</strong> <span id="receiptEmail"></span></p>
+            <p><strong>Amount Paid:</strong> $<span id="receiptAmount"></span></p>
+            <p><strong>Remaining Amount:</strong> $<span id="receiptRemainingAmount"></span></p>
+            <button id="printBtn">Print Receipt</button>
+        </div>
+    </div>
+
+    <script>
+        const totalAmountDue = 55000;
+
+        // Predefined list of student details
+        const studentDetails = {
+            '21bq1a6102': { name: 'swathi', email: '21bq1a6102@vvit.net' },
+            '21bq1a6138': { name: 'sifa', email: '21bq1a6138@vvit.net' },
+            '21bq1a6152': { name: 'sharmila', email: '21bq1a6152@vvit.net'},
+            '21bq1a6129': { name: 'sneha', email: '21bq1a6129@vvit.net'},
+            '21bq1a6137': { name: 'sudheeshna', email: '21bq1a6137@vvit.net'},
+            '21bq1a6147': { name: 'roji', email: '21bq1a6147@vvit.net'},
+            '21bq1a6113': { name: 'sushma sri', email: '21bq1a6113@vvit.net'},
+            '21bq1a6132': { name: 'chinmai', email: '21bq1a6132@vvit.net'}
+
+        };
+
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var rollNumber = document.getElementById('rollNumber').value;
+            var searchError = document.getElementById('searchError');
+
+            searchError.textContent = '';
+
+            if (!rollNumber) {
+                searchError.textContent = 'Please enter a roll number.';
+                return;
+            }
+
+            if (!studentDetails[rollNumber]) {
+                searchError.textContent = 'Roll number not found.';
+                return;
+            }
+
+            var student = studentDetails[rollNumber];
+            var remainingAmount = totalAmountDue - student.amountPaid;
+
+            document.getElementById('detailRollNumber').textContent = rollNumber;
+            document.getElementById('detailName').textContent = student.name;
+            document.getElementById('detailEmail').textContent = student.email;
+            document.getElementById('totalFee').textContent = totalAmountDue.toFixed(2);
+            document.getElementById('amountPaid').textContent = student.amountPaid.toFixed(2);
+            document.getElementById('remainingAmount').textContent = remainingAmount.toFixed(2);
+
+            document.getElementById('studentDetails').style.display = 'block';
+            document.getElementById('paymentMethodSection').style.display = 'none';
+            document.getElementById('receipt').style.display = 'none';
+        });
+
+        document.getElementById('payNowBtn').addEventListener('click', function() {
+            document.getElementById('paymentMethodSection').style.display = 'block';
+        });
+
+        document.getElementById('paymentMethod').addEventListener('change', function() {
+            var paymentMethod = this.value;
+            var cardDetails = document.getElementById('cardDetails');
+            if (paymentMethod === 'card') {
+                cardDetails.style.display = 'block';
+            } else {
+                cardDetails.style.display = 'none';
+            }
+        });
+
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var paymentMethod = document.getElementById('paymentMethod').value;
+            var paymentError = document.getElementById('paymentError');
+
+            paymentError.textContent = '';
+
+            if (!paymentMethod) {
+                paymentError.textContent = 'Please select a payment method.';
+                return;
+            }
+
+            if (paymentMethod === 'card') {
+                var cardNumber = document.getElementById('cardNumber').value;
+                var cardExpiry = document.getElementById('cardExpiry').value;
+                var cardCVC = document.getElementById('cardCVC').value;
+
+                if (!cardNumber || !cardExpiry || !cardCVC) {
+                    paymentError.textContent = 'Please fill out all card details.';
+                    return;
+                }
+
+                // Perform card validation here (e.g., Luhn algorithm for card number)
+
+                // For demo purposes, assume validation passed and proceed
+            }
+
+            // Retrieve student details
+            var rollNumber = document.getElementById('detailRollNumber').textContent;
+            var student = studentDetails[rollNumber];
+            var amountPaid = totalAmountDue - parseFloat(document.getElementById('remainingAmount').textContent);
+
+            // Display the receipt
+            document.getElementById('receiptRollNumber').textContent = rollNumber;
+            document.getElementById('receiptName').textContent = student.name;
+            document.getElementById('receiptEmail').textContent = student.email;
+            document.getElementById('receiptAmount').textContent = amountPaid.toFixed(2);
+            document.getElementById('receiptRemainingAmount').textContent = '0.00';
+
+            document.getElementById('receipt').style.display = 'block';
+            document.getElementById('studentDetails').style.display = 'none';
+            document.getElementById('paymentMethodSection').style.display = 'none';
+        });
+
+        document.getElementById('printBtn').addEventListener('click', function() {
+            var printContents = document.getElementById('receipt').innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+            window.location.reload();  // Reload to restore the original state
+        });
+    </script>
+</body>
+</html>
